@@ -1,28 +1,25 @@
-class Product {
-    constructor(id: number, name: string, price: number, weight: number) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-    }
-
+interface IProduct {
     id: number;
     name: string;
     price: number;
-    weight: number;
+    weight: number | string;
 }
 
-class Order {
-    constructor(id: number, deliveryAddress: string, createdAt: string, updatedAt: string, products: Product[]){
-        this.id = id;
-        this.deliveryAddress = deliveryAddress;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.products = products;
-    }
+interface IOrder<T>{
     id: number;
     deliveryAddress: string;
     createdAt: string;
     updatedAt: string;
-    products: Product[];
+    products: T;
+}
+
+//order
+const someOrder: IOrder<IProduct[]> = {
+    id: 0,
+    deliveryAddress: 'Tighina',
+    createdAt: 'Drochia',
+    updatedAt: 'Ialoveni',
+    products: [
+        { id: 0, name: 'Carnatei', price: 42, weight: 0.3}
+    ]
 }
